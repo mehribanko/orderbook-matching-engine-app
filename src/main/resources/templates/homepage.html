@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv='Content-Type' content="text/html; charset=UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<title>Home - Orderbook</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+<script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script type="text/javascript"
+	th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+	<h1 class="text-center pt-5 pb-5">Welcome to <strong>WKK</strong> Orderbook!</h1>
+	
+ 
+
+	<div class="container">
+	
+			<div class="d-flex justify-content-center">
+
+				<div class="card card-header" style="width:18rem">
+					<h7>Last Sale Price: <span th:text=${saleprice}></span></h7>
+				</div>
+			</div>
+	
+
+		<div class="row">
+
+			<div class="col">
+
+				<form th:action="@{/addbuyorder}" method="post">
+					<!--Price input -->
+					<div class="form-outlinec mx-auto pt-3" style="width: 400px;">
+						<input type="number" id="buyprice" name="price"  placeholder="Enter price" class="form-control" /> <label
+							class="form-label" for="price">Price</label>
+					</div>
+
+					<!-- Amount input -->
+					<div class="form-outline mx-auto" style="width: 400px;">
+						<input type="number" id="buyamount" name="size"  placeholder="Enter amount" class="form-control" />
+						<label class="form-label" for="size">Amount</label>
+					</div>
+					
+
+					<input type="text" id="side" name="side" value="BUY"   hidden/>
+					<input type="time" id="time" name="time"  th:value="${#dates.format(#dates.createNow(), 'HH:mm:ss')}"  hidden/>
+						
+					<!-- Submit button -->
+					<div class="col text-center">
+						<button type="submit" class="btn btn-success btn-block mx-auto"
+							style="width: 200px;">Add Buy Order</button>
+					</div>
+				</form>
+
+				<div class="pt-5 container-fluid">
+					<h3  style="color:green">Buy Orders</h3>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th scope="col">Price</th>
+								<th scope="col">Amount</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr th:each="order:${buyorders}">
+								<td class="cash"  th:text="${order.key}"></td>
+								<td class="cash"  th:text="${order.value}"></td>
+							</tr>
+						</tbody>
+
+					</table>
+
+				</div>
+
+			</div>
+
+			<div class="col">
+				<form th:action="@{/addsellorder}" method="post">
+					<!-- Price input -->
+					<div class="form-outlinec mx-auto pt-3" style="width: 400px;">
+						<input type="number" id="price2" name="price" placeholder="Enter price" class="form-control" /> <label
+							class="form-label" for="price">Price</label>
+					</div>
+
+					<!-- Amount input -->
+					<div class="form-outline mx-auto" style="width: 400px;">
+						<input type="number" id="sellamount" name="size" placeholder="Enter amount" class="form-control" /> <label
+							class="form-label" for="size">Amount</label>
+					</div>
+					
+				
+					<input type="text" id="side2" name="side" value="SELL" hidden /> 
+					<input type="time" id="time2" name="time"  th:value="${#dates.format(#dates.createNow(), 'HH:mm:ss')}" hidden />
+
+					<!-- Submit button -->
+					<div class="col text-center">
+						<button type="submit" class="btn btn-danger btn-block mx-auto"
+							style="width: 200px;">Add Sell Order</button>
+					</div>
+				</form>
+				
+				<div class="pt-5 container-fluid">
+					<h3  style="color:red">Sell Orders</h3>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th scope="col">Price</th>
+								<th scope="col">Amount</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr th:each="order:${sellorders}">
+								<td class="cash"  th:text="${order.key}"></td>
+								<td class="cash"  th:text="${order.value}"></td>
+							</tr>
+						</tbody>
+
+					</table>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+</body>
+</html>
