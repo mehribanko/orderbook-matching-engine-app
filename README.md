@@ -1,15 +1,19 @@
-Orderbook Matching Engine Web App
+# Orderbook Matching Engine Web App
 
-This project is a real-time orderbook matching engine web application designed for crypto exchange scenarios. The application utilizes a combination of technologies to deliver efficient order matching, and order creation.
-Technologies Used:
+This project is a real-time orderbook matching engine web application designed for crypto exchange scenarios. The application utilizes a combination of technologies to deliver efficient order matching and creation.
 
-    Front End: Thymeleaf
-    Database: PostgreSQL with Hibernate, JDBC
-    Backend Logic: Java
+## Technologies Used:
 
-How It Works:
-    User Orders: Users submit buy and sell orders through the user-friendly interface.
+- **Front End:** Thymeleaf
+- **Database:** PostgreSQL with Hibernate, JDBC
+- **Backend Logic:** Java
 
-    Real-Time Matching: The matching engine processes orders in real-time, determining optimal matches between buy and sell orders.
+## How It Works:
 
-    Order Creation: Successfully matched orders result in the creation of new orders in the system. 
+1. **User Orders:** Users submit buy and sell orders through the user-friendly interface.
+
+2. **Real-Time Matching:** The matching engine processes orders in real-time, determining optimal matches between buy and sell orders.
+
+3. **Order Creation:** Successfully matched orders result in the creation of new orders in the system.
+
+This project is ideal for anyone looking to implement a robust orderbook matching engine for a crypto exchange platform.
